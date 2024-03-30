@@ -8,7 +8,7 @@ This interactive web application allows users to create personalized digital pos
 
 **Live Website:** [Travel Destination Diary](https://chakrikaanousha.github.io/Travel-Destination-Diary/)
 
-## INTERFACE:
+## Interface:
 
 
 ## **Code Highlights:**

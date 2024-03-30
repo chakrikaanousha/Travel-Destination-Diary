@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destination Diary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="color"] {
+            margin-bottom: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 5px;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ffc200;
+        }
+
+        #diary {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .entry {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .entry p {
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .entry img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .edit-button {
+            margin-top: 10px;
+            background-color: #ccc;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-button:hover {
+            background-color: #999;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h1>Travel Destination Diary</h1>
+
+    <form id="form">
+        <label for="place">Place Visited:</label>
+        <input type="text" id="place" placeholder="Enter the place visited" required>
+
+        <label for="experience">Your Experience:</label>
+        <textarea id="experience" placeholder="Share your experience" required></textarea>
+
+        <label for="image">Upload Picture (optional):</label>
+        <input type="file" id="image" accept="image/*">
+
+        <label for="color">Choose Post Color:</label>
+        <input type="color" id="color" value="#ffcc00">
+
+        <button type="button" onclick="addEntry()">Add Entry</button>
+    </form>
+
+    <div id="diary"></div>
+</div>
+
+<script>
+    function addEntry() {
+        var place = document.getElementById('place').value.trim();
+        var experience = document.getElementById('experience').value.trim();
+        var image = document.getElementById('image').files[0];
+        var color = document.getElementById('color').value;
+
+        if (!place || !experience) {
+            alert("Please fill in both place and experience fields.");
+            return;
+        }
+
+        var diary = document.getElementById('diary');
+
+        var entry = document.createElement('div');
+        entry.className = 'entry';
+        entry.style.backgroundColor = color;
+
+        var text = document.createElement('p');
+        text.innerHTML = '<strong>' + place + ':</strong> ' + experience;
+
+        if (image) {
+            var img = document.createElement('img');
+            img.src = URL.createObjectURL(image);
+            entry.appendChild(img);
+        }
+
+        entry.appendChild(text);
+
+        var editButton = document.createElement('button');
+        editButton.className = 'edit-button';
+        editButton.textContent = 'Edit';
+        editButton.onclick = function() {
+            var newText = prompt('Edit your experience:', experience);
+            if (newText !== null) {
+                text.innerHTML = '<strong>' + place + ':</strong> ' + newText;
+            }
+            var newColor = prompt('Edit post color (hexadecimal value):', color);
+            if (newColor !== null) {
+                entry.style.backgroundColor = newColor;
+            }
+        };
+        entry.appendChild(editButton);
+
+        diary.appendChild(entry);
+
+        // Reset form fields
+        document.getElementById('place').value = '';
+        document.getElementById('experience').value = '';
+        document.getElementById('image').value = '';
+        document.getElementById('color').value = '#ffcc00';
+    }
+</script>
+
+</body>
+</html>

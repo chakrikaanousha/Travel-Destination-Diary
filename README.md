@@ -1,6 +1,6 @@
-**README Description:**
+Welcome to the **Travel Destination Diary!**
 
-Welcome to the Travel Destination Diary!
+**Description:**
 
 This interactive web application allows users to create personalized digital post-it notes for each of their travel experiences. Capture memories, jot down reflections, and even upload photos to customize your diary entries. With options to edit text content and adjust post colors, you can tailor your entries to perfectly encapsulate the essence of each adventure. Whether you're revisiting past trips or planning new ones, the Travel Destination Diary is your go-to platform for documenting and sharing your travel stories.
 

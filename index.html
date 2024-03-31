@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Destination Diary</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -124,19 +125,23 @@
     <h1>Travel Destination Diary</h1>
 
     <form id="form">
-        <label for="place">Place Visited:</label>
-        <input type="text" id="place" placeholder="Enter the place visited" required>
-
-        <label for="experience">Your Experience:</label>
-        <textarea id="experience" placeholder="Share your experience" required></textarea>
-
-        <label for="image">Upload Picture (optional):</label>
-        <input type="file" id="image" accept="image/*">
-
-        <label for="color">Choose Post Color:</label>
-        <input type="color" id="color" value="#ffcc00">
-
-        <button type="button" onclick="addEntry()">Add Entry</button>
+        <div class="form-group">
+            <label for="place">Place Visited:</label>
+            <input type="text" class="form-control" id="place" placeholder="Enter the place visited" required>
+        </div>
+        <div class="form-group">
+            <label for="experience">Your Experience:</label>
+            <textarea class="form-control" id="experience" placeholder="Share your experience" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Upload Picture (optional):</label>
+            <input type="file" class="form-control-file" id="image" accept="image/*">
+        </div>
+        <div class="form-group">
+            <label for="color">Choose Post Color:</label>
+            <input type="color" id="color" value="#ffcc00">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="addEntry()">Add Entry</button>
     </form>
 
     <div id="diary"></div>
@@ -172,7 +177,7 @@
         entry.appendChild(text);
 
         var editButton = document.createElement('button');
-        editButton.className = 'edit-button';
+        editButton.className = 'edit-button btn btn-secondary';
         editButton.textContent = 'Edit';
         editButton.onclick = function() {
             var newText = prompt('Edit your experience:', experience);
